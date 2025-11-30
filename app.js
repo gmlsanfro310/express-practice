@@ -1,5 +1,8 @@
 var express = require('express');
 const logger = require('morgan');
+const axios = require('axios');
+const list = require('./data');
+
 var app = express()
 const port = 3000
 
@@ -25,6 +28,19 @@ app.post('/user', (reaq, res) => {
     res.send(req.body);
 })
 
+app.get('/music_list', (req,res) => {
+    res.json(list);
+})
+
+app.get('/musicSearch/:term', async (req, res) => {
+    const params = {
+        term: req.params.term,
+        entity: "album",
+    }
+    var response = await axios.get('https://itunes.apple.com/search', { params: params });
+    console.log(response.data);
+    res.json(response.data);
+})
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

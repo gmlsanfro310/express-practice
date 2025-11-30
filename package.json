@@ -9,6 +9,8 @@
   "author": "seongjun Park",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "axios": "^1.13.2",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
   }
 }
