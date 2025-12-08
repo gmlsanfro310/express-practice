@@ -3,14 +3,15 @@ const logger = require('morgan');
 const axios = require('axios');
 const list = require('./data');
 const firebase = require('./firebase');
+const cors = require('cors');
 
 var app = express()
 const port = 3000
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(logger('dev'));
 app.use(express.static('public'));
+app.use(cors({ origin : '*'}));
 
 app.get('/', (req, res) => {
     res.sendFile('index.html')
