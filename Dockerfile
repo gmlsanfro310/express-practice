@@ -8,7 +8,6 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 
-# 4. 소스 코드 복사
 # .dockerignore에 의해 지정된 파일들은 제외하고 나머지 모든 파일을 복사
 COPY . .
 
